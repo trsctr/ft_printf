@@ -6,7 +6,7 @@
 /*   By: oandelin <oandelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 18:46:06 by oandelin          #+#    #+#             */
-/*   Updated: 2023/01/17 10:13:27 by oandelin         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:10:29 by oandelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H 
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 
 // 		CHAR
 
@@ -59,6 +60,7 @@ void	*ft_memset(void *b, int c, size_t len);
 int		ft_putchar_fd(char c, int fd);
 int		ft_putendl_fd(char *s, int fd);
 int		ft_putnbr_fd(int n, int fd);
+int		ft_putuint_fd(unsigned int n, int fd);
 int		ft_putstr_fd(char *s, int fd);
 
 #endif

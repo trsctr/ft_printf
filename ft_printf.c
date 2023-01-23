@@ -6,38 +6,55 @@
 /*   By: oandelin <oandelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:46:33 by oandelin          #+#    #+#             */
-/*   Updated: 2023/01/20 19:44:20 by oandelin         ###   ########.fr       */
+/*   Updated: 2023/01/23 18:04:38 by oandelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
 
-/*
-int check_specifier (en tiia mita taa ottaa sisaan)
+int	convert_id(int n)
 {
-	if (format[i+1] == 'i')
-		return (convert_int(va_arg(args, int)));
-	else if (format[i+1] == 'c')
-		return (convert_char(va_arg(args, int)));
-	else if (format[i+1] == 'd')
-		ret += convert decimal
-	else if (format[i+1] == 'u')
-		ret += convert unsigned_decimal
-	else if (format[i+1] == 'x')
-		ret += convert hex
-	else if (format[i+1] == 'X')
-		ret += convert hex_capital
-	else if (format[i+1] == 's')
-		return (convert_str(va_arg(args, const char *)));
-	else if (format[i+1] == 'p')
-		ret += convert pointer
-	else if (format[i+1] == '%')
-		ret += convert persent
-
+	return (ft_putnbr_fd(n, 1));
 }
-*/
-/*
+
+int	convert_c(int c)
+{
+	return (ft_putchar_fd((char) c, 1));
+}
+
+int	convert_u(unsigned int n)
+{
+	return (ft_putuint_fd(n, 1));
+}
+
+int	convert_str(char *s)
+{
+	if (!s)
+		return (ft_putstr_fd("(null)", 1));
+	else 
+		return (ft_putstr_fd(s, 1));
+}
+
+int	check_specifier (const char *format, va_list args, int i)
+{
+	if (format[i] == 'i' || format[i] == 'd')
+		return (convert_id(va_arg(args, int)));
+	else if (format[i] == 'c')
+		return (convert_c(va_arg(args, int)));
+	else if (format[i] == 'u')
+		return (convert_u(va_arg(args, unsigned int)));
+	else if (format[i] == 'x' || format[i] == 'X')
+	  	return (convert_x(va_arg(args, unsigned int), format[i]));
+	else if (format[i] == 's')
+	 	return (convert_str(va_arg(args, char *)));
+	else if (format[i] == 'p')
+		return (convert_p(va_arg(args, void *)));
+	else if (format[i] == '%')
+	 	return(ft_putchar_fd('%', 1));
+	return(0);
+}
+
 int parse_format (const char *format, va_list args)
 {
 	int i;
@@ -48,19 +65,21 @@ int parse_format (const char *format, va_list args)
 	while (format[i])
 	{
 		if (format[i] == '%')
-			ret += check_specifier
+		{
+			i++;
+			ret += check_specifier(format, args, i);
+		}
 		else
 			ret += ft_putchar_fd(format[i], 1);
 		i++;
 	}
-
+	return(ret);
 }
 
-*/
 int	ft_printf(const char *format, ...)
 {
 	va_list	args;
-	char	*output;
+	// char	*output;
 	int		ret;
 	int		i;
 
@@ -72,8 +91,9 @@ int	ft_printf(const char *format, ...)
 	// are the args strings?
 	// format is a string. figure out how to replace %s with a string.
 	// 
-	output = (char *)format;
-	ret = ft_putstr_fd(output, 1);
+	ret = parse_format(format, args);
+	// output = (char *)format;
+	// ret = ft_putstr_fd(output, 1);
 		
 	va_end(args);
 	return (ret);
