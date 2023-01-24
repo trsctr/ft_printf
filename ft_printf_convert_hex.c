@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert_hex.c                                      :+:      :+:    :+:   */
+/*   ft_printf_convert_hex.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oandelin <oandelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:43:44 by oandelin          #+#    #+#             */
-/*   Updated: 2023/01/23 18:07:50 by oandelin         ###   ########.fr       */
+/*   Updated: 2023/01/24 16:02:38 by oandelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
 
-int printhex(unsigned long n, char c)
+int	printhex(unsigned long n, char c)
 {
 	int	i;
 
 	i = 0;
 	if (n < 0)
-	 	n = ULONG_MAX + n + 1;
+		n = ULONG_MAX + n + 1;
 	if (n > 15)
 	{
 		i += printhex(n / 16, c);
@@ -32,9 +32,9 @@ int printhex(unsigned long n, char c)
 	return (i);
 }
 
-int convert_x(unsigned int n, char c)
+int	convert_x(unsigned int n, char c)
 {
-	int ret;
+	int	ret;
 
 	if (n < 0)
 		n = UINT_MAX - n + 1;
@@ -42,15 +42,15 @@ int convert_x(unsigned int n, char c)
 		c = 55;
 	else
 		c = 87;
-	ret = printhex((long long)n, c);	
-	return(ret);
+	ret = printhex((long long)n, c);
+	return (ret);
 }
 
-int convert_p(void *p)
+int	convert_p(void *p)
 {
-	int ret;
+	int	ret;
 
 	ret = ft_putstr_fd("0x", 1);
-	ret += printhex((long long) p, 87);
+	ret += printhex((long long)p, 87);
 	return (ret);
 }

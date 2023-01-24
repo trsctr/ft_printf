@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf_convert_uidcs.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oandelin <oandelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/12 16:46:33 by oandelin          #+#    #+#             */
-/*   Updated: 2023/01/24 16:05:07 by oandelin         ###   ########.fr       */
+/*   Created: 2023/01/24 15:53:30 by oandelin          #+#    #+#             */
+/*   Updated: 2023/01/24 15:55:36 by oandelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
 
-int	ft_printf(const char *format, ...)
+int	convert_id(int n)
 {
-	va_list	args;
-	int		ret;
+	return (ft_putnbr_fd(n, 1));
+}
 
-	ret = 0;
-	va_start(args, format);
-	ret = parse_format(format, args);
-	va_end(args);
-	return (ret);
+int	convert_u(unsigned int n)
+{
+	return (ft_putuint_fd(n, 1));
+}
+
+int	convert_c(int c)
+{
+	return (ft_putchar_fd((char) c, 1));
+}
+
+int	convert_str(char *s)
+{
+	if (!s)
+		return (ft_putstr_fd("(null)", 1));
+	else
+		return (ft_putstr_fd(s, 1));
 }
