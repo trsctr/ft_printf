@@ -6,7 +6,7 @@
 /*   By: oandelin <oandelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:43:44 by oandelin          #+#    #+#             */
-/*   Updated: 2023/01/24 16:02:38 by oandelin         ###   ########.fr       */
+/*   Updated: 2023/01/26 15:50:27 by oandelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	convert_x(unsigned int n, char c)
 		c = 55;
 	else
 		c = 87;
-	ret = printhex((long long)n, c);
+	ret = printhex((unsigned long)n, c);
 	return (ret);
 }
 
@@ -51,6 +51,6 @@ int	convert_p(void *p)
 	int	ret;
 
 	ret = ft_putstr_fd("0x", 1);
-	ret += printhex((long long)p, 87);
+	ret += printhex((unsigned long)p, 87);
 	return (ret);
 }

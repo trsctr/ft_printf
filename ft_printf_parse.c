@@ -6,7 +6,7 @@
 /*   By: oandelin <oandelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 15:55:55 by oandelin          #+#    #+#             */
-/*   Updated: 2023/01/24 15:56:54 by oandelin         ###   ########.fr       */
+/*   Updated: 2023/01/26 15:50:53 by oandelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 
 int	check_specifier(const char *format, va_list args, int i)
 {
-	if (format[i] == 'i' || format[i] == 'd')
+	if (format[i] == '\0')
+		return (0);
+	else if (format[i] == 'i' || format[i] == 'd')
 		return (convert_id(va_arg(args, int)));
 	else if (format[i] == 'c')
 		return (convert_c(va_arg(args, int)));
@@ -32,7 +34,7 @@ int	check_specifier(const char *format, va_list args, int i)
 	return (0);
 }
 
-int parse_format(const char *format, va_list args)
+int	parse_format(const char *format, va_list args)
 {
 	int	i;
 	int	ret;
@@ -41,12 +43,12 @@ int parse_format(const char *format, va_list args)
 	ret = 0;
 	while (format[i])
 	{
-		if (format[i] == '%')
+		if (format[i] == '%' && format[i + 1])
 		{
 			i++;
 			ret += check_specifier(format, args, i);
 		}
-		else
+		else if (format[i] != '%')
 			ret += ft_putchar_fd(format[i], 1);
 		i++;
 	}

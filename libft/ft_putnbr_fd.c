@@ -6,7 +6,7 @@
 /*   By: oandelin <oandelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:31:12 by oandelin          #+#    #+#             */
-/*   Updated: 2023/01/17 10:16:16 by oandelin         ###   ########.fr       */
+/*   Updated: 2023/01/26 13:23:41 by oandelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 // uses ft_putchar_fd to write one digit at a time
 int	ft_putnbr_fd(int n, int fd)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	if (n == -2147483648)
 	{

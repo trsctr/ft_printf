@@ -54,6 +54,7 @@ int main (void)
 	char *teststring = "testing testing";
 	char *out1 = "::::: custom ft_printf:\n";
 	char *out2 = "::::: libc printf:\n";
+	
 
 	bold();
 	printf("MY FIRST FT_PRINTF TESTER\n\n");
@@ -61,7 +62,6 @@ int main (void)
 	printf("# SINGLE FORMAT SPECIFIERS #\n");
 	printf("############################\n\n");
 	regular();
-
 
 	// %%
 	bold(); printf("%%%% - PERCENT SIGN\n"); regular();
@@ -103,12 +103,12 @@ int main (void)
 	ret2 = printf("%u", u);
 	checkresult(ret1, ret2);
 
-	// bold(); printf("%%u - UNSIGNED DECIMAL (BASE 10) NUMBER, BUT THE NUMBER IS -51\n"); regular();
-	// printf("%s", out1);
-	// ret1 = ft_printf("%u", uneg);
-	// printf("\n%s", out2);
-	// ret2 = printf("%u", uneg);
-	// checkresult(ret1, ret2);
+	// // bold(); printf("%%u - UNSIGNED DECIMAL (BASE 10) NUMBER, BUT THE NUMBER IS -51\n"); regular();
+	// // printf("%s", out1);
+	// // ret1 = ft_printf("%u", uneg);
+	// // printf("\n%s", out2);
+	// // ret2 = printf("%u", uneg);
+	// // checkresult(ret1, ret2);
 
 	bold(); printf("%%s - CHARACTER STRING\n"); regular();
 	printf("%s", out1);
@@ -133,9 +133,9 @@ int main (void)
 
 	bold(); printf("%%p - POINTER ADDRESS IN HEXADECIMAL FORMAT\n"); regular();
 	printf("%s", out1);
-	ret1 = ft_printf("%p", (void *)-1);
+	ret1 = ft_printf("%p", (void *)6316134613616316134);
 	printf("\n%s", out2);
-	ret2 = printf("%p", (void *)-1);
+	ret2 = printf("%p", (void *)6316134613616316134);
 	checkresult(ret1, ret2);
 
 	bold();
@@ -151,4 +151,20 @@ int main (void)
 	ret2 = printf("character: %c decimal: %d string: %s percent sign: %%", '!', i, teststring);
 	checkresult(ret1, ret2);
 
+	bold();
+	printf("#####################\n");
+	printf("# ERIKOIS TAPAUKSET #\n");
+	printf("#####################\n\n");
+	regular();
+
+	printf("%% STRINGIN LOPUSSA\n");
+	printf("%s", out1);
+	char *s = "meneeko vituiks%";
+	ret1 = ft_printf(s, "haha");
+	printf("\n%s", out2);
+	ret2 = printf(s, "aaa");
+	checkresult(ret1, ret2);
+
+	ft_printf("%d\n", ret1);
+	ft_printf("%d\n", ret2);
 }
