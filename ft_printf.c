@@ -6,11 +6,10 @@
 /*   By: oandelin <oandelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:46:33 by oandelin          #+#    #+#             */
-/*   Updated: 2023/01/24 16:05:07 by oandelin         ###   ########.fr       */
+/*   Updated: 2023/02/21 16:17:04 by oandelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "ft_printf.h"
 
 int	ft_printf(const char *format, ...)

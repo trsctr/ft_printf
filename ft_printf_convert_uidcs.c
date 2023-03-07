@@ -6,12 +6,11 @@
 /*   By: oandelin <oandelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 15:53:30 by oandelin          #+#    #+#             */
-/*   Updated: 2023/01/26 13:24:37 by oandelin         ###   ########.fr       */
+/*   Updated: 2023/02/21 16:17:09 by oandelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "ft_printf.h"
 
 int	convert_id(int n)
 {

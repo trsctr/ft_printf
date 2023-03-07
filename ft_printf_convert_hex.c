@@ -6,12 +6,11 @@
 /*   By: oandelin <oandelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 16:43:44 by oandelin          #+#    #+#             */
-/*   Updated: 2023/01/26 15:50:27 by oandelin         ###   ########.fr       */
+/*   Updated: 2023/03/03 13:58:29 by oandelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "ft_printf.h"
 
 int	printhex(unsigned long n, char c)
 {

@@ -6,14 +6,13 @@
 /*   By: oandelin <oandelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:56:24 by oandelin          #+#    #+#             */
-/*   Updated: 2023/01/24 15:59:56 by oandelin         ###   ########.fr       */
+/*   Updated: 2023/02/21 16:14:56 by oandelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 # include <stdarg.h>
-# include "libft.h"
 
 int	ft_printf(const char *format, ...);
 int	check_specifier(const char *format, va_list args, int i);

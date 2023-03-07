@@ -6,38 +6,37 @@
 #    By: oandelin <oandelin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/01 16:51:49 by oandelin          #+#    #+#              #
-#    Updated: 2023/03/03 13:57:50 by oandelin         ###   ########.fr        #
+#    Updated: 2023/03/03 13:55:59 by oandelin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 	= libftprintf.a
-SRCS	= ft_printf.c ft_printf_parse.c ft_printf_convert_hex.c \
-			ft_printf_convert_uidcs.c
+NAME 	= libft.a
+SRCS 	= ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
+		ft_toupper.c ft_tolower.c ft_strlen.c ft_memset.c ft_bzero.c \
+		ft_memcpy.c ft_memmove.c ft_strlcpy.c ft_strlcat.c ft_strchr.c \
+		ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c ft_strnstr.c \
+		ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c \
+		ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c \
+		ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putuint_fd.c
 OBJS	= $(SRCS:.c=.o)
-HEADERS = ft_printf.h libft/libft.h
-INCFLAG = -I libft
-CC	= cc
-CFLAGS	= -Wall -Werror -Wextra
+HEADER	= $(NAME:.a=.h)
+CC = cc
+CFLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 
-$(NAME): $(SRCS) $(HEADERS)
-	@make -C libft
-	@cd libft && mv libft.a ..
-	@mv libft.a $(NAME)
-	@echo "Compiling ft_printf object files"
-	@$(CC) $(CFLAGS) -c $(SRCS) $(INCFLAG)
-	@echo "Combining libraries and creating libftprintf.a"
+$(NAME): $(SRCS)
+	@echo "Compiling libft object files"
+	@$(CC) $(CFLAGS) -c $(SRCS)
+	@echo "Creating libft library"
 	@ar rcs $(NAME) $(OBJS)
-	@echo "Done!"
 
 clean:
-	@make -C libft clean
-	@echo "Cleaning ft_printf object files"
+	@echo "Cleaning libft object files"
 	@rm -f $(OBJS)
 
 fclean: clean
-	@echo "Removing libftprintf.a"
+	@echo "Removing libft.a"
 	@rm -f $(NAME)
 
 re: fclean all
