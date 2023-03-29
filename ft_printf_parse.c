@@ -6,7 +6,7 @@
 /*   By: oandelin <oandelin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 15:55:55 by oandelin          #+#    #+#             */
-/*   Updated: 2023/02/21 16:16:01 by oandelin         ###   ########.fr       */
+/*   Updated: 2023/03/12 16:49:26 by oandelin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	check_specifier(const char *format, va_list args, int i)
 		return (convert_p(va_arg(args, void *)));
 	else if (format[i] == '%')
 		return (ft_putchar_fd('%', 1));
+	else
+		return (ft_putchar_fd(format[i], 1));
 	return (0);
 }
 
